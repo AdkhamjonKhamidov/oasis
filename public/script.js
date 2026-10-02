@@ -79,11 +79,18 @@ if (featuredCarousel) {
   const nextButton = featuredCarousel.querySelector("[data-carousel-next]");
   let activeIndex = 0;
 
+  slides.forEach((slide) => {
+    slide.addEventListener("animationend", () => slide.classList.remove("is-entering"));
+  });
+
   const showSlide = (index) => {
+    const previousIndex = activeIndex;
     activeIndex = (index + slides.length) % slides.length;
     slides.forEach((slide, slideIndex) => {
       slide.hidden = slideIndex !== activeIndex;
+      slide.classList.remove("is-entering");
     });
+    if (activeIndex !== previousIndex) slides[activeIndex].classList.add("is-entering");
     paginationButtons.forEach((button, buttonIndex) => {
       button.setAttribute("aria-pressed", String(buttonIndex === activeIndex));
     });

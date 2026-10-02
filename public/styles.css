@@ -52,17 +52,18 @@ h1 em, h2 em { color: var(--ink); font-weight: 500; }
 .note-line { width: 33px; height: 1px; background: var(--gold); }
 .hero-carousel { position: absolute; top: 12%; bottom: 13%; right: 8.3%; width: 34%; max-width: 470px; display: flex; flex-direction: column; border: 1px solid rgba(18,63,99,.28); background: var(--paper); }
 .dish-slides { min-height: 0; flex: 1; }
-.dish-slide { height: 100%; min-height: 0; position: relative; animation: dish-slide-in .3s ease both; }
+.dish-slide { height: 100%; min-height: 0; position: relative; }
 .dish-slide[hidden] { display: none; }
-.dish-slide > img { width: 100%; height: 100%; object-fit: cover; }
-.dish-slide h2 { position: absolute; right: 0; bottom: 0; left: 0; margin: 0; padding: 16px 18px; background: linear-gradient(transparent, rgba(20, 28, 32, .78)); color: #fff; font-family: var(--serif); font-size: clamp(24px, 2.5vw, 34px); font-weight: 600; }
+.dish-slide.is-entering { animation: dish-slide-in .3s ease both; }
+.dish-slide > img { width: 100%; height: 100%; object-fit: cover; backface-visibility: hidden; }
+.dish-slide h2 { position: absolute; right: 0; bottom: 0; left: 0; margin: 0; padding: 32px 18px 16px; background: linear-gradient(0deg, rgba(0, 0, 0, .96), rgba(0, 0, 0, .72) 52%, transparent); color: #fff; font-family: var(--serif); font-size: clamp(24px, 2.5vw, 34px); font-weight: 600; }
 .dish-controls { min-height: 42px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(18,63,99,.16); }
 .dish-arrow { width: 30px; height: 30px; display: grid; place-items: center; border: 1px solid rgba(18,63,99,.35); background: transparent; color: var(--blue); cursor: pointer; }
 .dish-arrow:hover, .dish-arrow:focus-visible { background: var(--blue); color: var(--paper); }
 .dish-pagination { display: flex; align-items: center; gap: 9px; }
 .dish-pagination button { width: 8px; height: 8px; padding: 0; border: 1px solid var(--blue); border-radius: 50%; background: transparent; cursor: pointer; }
 .dish-pagination button[aria-pressed="true"] { background: var(--blue); }
-@keyframes dish-slide-in { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes dish-slide-in { from { opacity: 0; } to { opacity: 1; } }
 .section-pad { padding-left: 11%; padding-right: 11%; }
 .story { min-height: 330px; padding-top: 78px; padding-bottom: 78px; display: grid; grid-template-columns: 1fr 1fr; gap: 10%; align-items: center; border-bottom: 1px solid rgba(18,63,99,.22); background: url("images/overlay-mandala.png") right -100px center / 420px auto no-repeat, linear-gradient(105deg, var(--sky), transparent 72%), var(--paper); }
 .eyebrow-dark { color: var(--ink); }
@@ -151,10 +152,12 @@ h1 em, h2 em { color: var(--ink); font-weight: 500; }
   .hero-actions a { font-size: 14px; }
   .hero-note { margin-top: 23px; font-size: 15px; }
   .hero-carousel { position: relative; top: auto; right: auto; bottom: auto; width: 86%; height: 380px; max-width: none; margin: 27px 7% 0; }
-  .dish-controls .dish-arrow { position: absolute; z-index: 2; top: 0; bottom: 42px; width: 50%; height: auto; border: 0; background: transparent; color: #fff; font-size: 32px; text-shadow: 0 1px 6px rgba(0,0,0,.65); }
+  .dish-controls .dish-arrow { position: absolute; z-index: 2; top: 0; bottom: 42px; width: 50%; height: auto; border: 0; background: transparent; color: #fff; }
   .dish-controls .dish-arrow:hover { background: transparent; color: #fff; }
-  .dish-controls [data-carousel-prev] { left: 0; justify-content: flex-start; padding-left: 16px; }
-  .dish-controls [data-carousel-next] { right: 0; justify-content: flex-end; padding-right: 16px; }
+  .dish-controls .dish-arrow > span { width: auto; height: auto; display: grid; place-items: center; border: 0; border-radius: 0; background: transparent; color: #fff; font-family: var(--serif); font-size: 32px; line-height: 1; text-shadow: 0 1px 6px rgba(0,0,0,.65); transition: transform .2s ease; }
+  .dish-controls .dish-arrow:hover > span, .dish-controls .dish-arrow:focus-visible > span { background: transparent; transform: scale(1.12); }
+  .dish-controls [data-carousel-prev] { left: 0; justify-items: start; padding-left: 12px; }
+  .dish-controls [data-carousel-next] { right: 0; justify-items: end; padding-right: 12px; }
   .dish-controls .dish-arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
   .dish-controls .dish-pagination { margin-inline: auto; }
   .section-pad { padding-left: 7%; padding-right: 7%; }
