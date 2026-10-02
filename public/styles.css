@@ -151,6 +151,12 @@ h1 em, h2 em { color: var(--ink); font-weight: 500; }
   .hero-actions a { font-size: 14px; }
   .hero-note { margin-top: 23px; font-size: 15px; }
   .hero-carousel { position: relative; top: auto; right: auto; bottom: auto; width: 86%; height: 380px; max-width: none; margin: 27px 7% 0; }
+  .dish-controls .dish-arrow { position: absolute; z-index: 2; top: 0; bottom: 42px; width: 50%; height: auto; border: 0; background: transparent; color: #fff; font-size: 32px; text-shadow: 0 1px 6px rgba(0,0,0,.65); }
+  .dish-controls .dish-arrow:hover { background: transparent; color: #fff; }
+  .dish-controls [data-carousel-prev] { left: 0; justify-content: flex-start; padding-left: 16px; }
+  .dish-controls [data-carousel-next] { right: 0; justify-content: flex-end; padding-right: 16px; }
+  .dish-controls .dish-arrow:focus-visible { outline: 2px solid var(--gold); outline-offset: -4px; }
+  .dish-controls .dish-pagination { margin-inline: auto; }
   .section-pad { padding-left: 7%; padding-right: 7%; }
   .story { min-height: 0; padding-top: 56px; padding-bottom: 58px; display: block; }
   .story h2, .story h2 em, .visit-section h2, .visit-section h2 em { font-size: 42px; }
